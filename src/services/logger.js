@@ -7,7 +7,7 @@
  */
 const log4js = require('log4js');
 const morgan = require('morgan');
-const config = require('./../../config')
+const config = require('./../../config');
 
 /**
  * Declarations & Implementations
