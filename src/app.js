@@ -11,6 +11,11 @@ const cors = require('cors');
 const config = require('../config')
 
 /**
+ * Required Services
+ */
+let Logger = require('./services/logger');
+
+/**
  * Global declarations
  */
 let models = path.join(__dirname, 'models');
@@ -35,6 +40,7 @@ app.use(cors({
     allowedHeaders: ['Origin', ' X-Requested-With', ' Content-Type', ' Accept ', ' Authorization'],
     credentials: true
 }));
+app.use(Logger.morgan);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -73,15 +79,15 @@ app.use(function(err, req, res, next) {
 mongoose.Promise = global.Promise;
 
 mongoose.connection.on('connected', () => {
-    console.log('DATABASE - Connected');
+    Logger.log.info('DATABASE - Connected');
 });
 
 mongoose.connection.on('error', (err) => {
-    console.log('DATABASE - Error:' + err);
+    Logger.log.error('DATABASE - Error:' + err);
 });
 
 mongoose.connection.on('disconnected', () => {
-    console.log('DATABASE - disconnected  Retrying....');
+    Logger.log.warn('DATABASE - disconnected  Retrying....');
 });
 
 let connectDb = function () {
@@ -93,7 +99,7 @@ let connectDb = function () {
     };
     mongoose.connect(dbURL, dbOptions)
         .catch(err => {
-            console.log('DATABASE - Error:' + err);
+            Logger.log.fatal('DATABASE - Error:' + err);
         });
 };
 
