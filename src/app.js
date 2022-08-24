@@ -52,9 +52,11 @@ app.use(cookieParser());
  */
 const index = require('./routes/index');
 const auth = require('./routes/auth.route');
+const user = require('./routes/user.route');
 
 app.use('/', index);
 app.use('/auth', auth);
+app.use('/user', user);
 
 /**
  * Catch 404 routes
