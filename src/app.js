@@ -8,12 +8,13 @@ let bodyParser = require('body-parser');
 const fs = require('fs');
 let mongoose = require('mongoose');
 const cors = require('cors');
+const config = require('../config')
 
 /**
  * Global declarations
  */
 let models = path.join(__dirname, 'models');
-let dbURL = process.env.DB_URL;
+let dbURL = config.mongoDBConnectionUrl;
 
 /**
  * Bootstrap Models
