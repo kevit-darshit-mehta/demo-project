@@ -8,7 +8,7 @@ let bodyParser = require('body-parser');
 const fs = require('fs');
 let mongoose = require('mongoose');
 const cors = require('cors');
-const config = require('../config')
+const config = require('../config');
 
 /**
  * Required Services
@@ -24,7 +24,7 @@ let dbURL = config.mongoDBConnectionUrl;
 /**
  * Bootstrap Models
  */
-fs.readdirSync(models).forEach(file => require(path.join(models, file)));
+fs.readdirSync(models).forEach((file) => require(path.join(models, file)));
 
 /**
  * Bootstrap App
@@ -34,12 +34,14 @@ let app = express();
 /**
  * CORS
  */
-app.use(cors({
-    origin: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Origin', ' X-Requested-With', ' Content-Type', ' Accept ', ' Authorization'],
-    credentials: true
-}));
+app.use(
+    cors({
+        origin: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Origin', ' X-Requested-With', ' Content-Type', ' Accept ', ' Authorization'],
+        credentials: true,
+    }),
+);
 app.use(Logger.morgan);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -48,14 +50,16 @@ app.use(cookieParser());
 /**
  * Import and Register Routes
  */
-let index = require('./routes/index');
+const index = require('./routes/index');
+const auth = require('./routes/auth.route');
 
 app.use('/', index);
+app.use('/auth', auth);
 
 /**
  * Catch 404 routes
  */
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     let err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -64,7 +68,7 @@ app.use(function(req, res, next) {
 /**
  * Error Handler
  */
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -95,12 +99,11 @@ let connectDb = function () {
         poolSize: 5,
         reconnectTries: Number.MAX_SAFE_INTEGER,
         reconnectInterval: 500,
-        useNewUrlParser: true
+        useNewUrlParser: true,
     };
-    mongoose.connect(dbURL, dbOptions)
-        .catch(err => {
-            Logger.log.fatal('DATABASE - Error:' + err);
-        });
+    mongoose.connect(dbURL, dbOptions).catch((err) => {
+        Logger.log.fatal('DATABASE - Error:' + err);
+    });
 };
 
 connectDb();
