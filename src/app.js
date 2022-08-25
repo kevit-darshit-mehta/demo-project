@@ -3,7 +3,6 @@
  */
 let express = require('express');
 let path = require('path');
-let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 const fs = require('fs');
 let mongoose = require('mongoose');
@@ -45,7 +44,6 @@ app.use(
 app.use(Logger.morgan);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 /**
  * Import and Register Routes
@@ -56,7 +54,7 @@ const user = require('./routes/user.route');
 
 app.use('/', index);
 app.use('/auth', auth);
-app.use('/user', user);
+app.use('/users', user);
 
 /**
  * Catch 404 routes

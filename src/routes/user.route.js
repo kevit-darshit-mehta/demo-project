@@ -11,11 +11,15 @@ const { listUsers } = require('../helper/user.helper');
  */
 
 /**
- *
+ * API to fetch user list from database
  */
 router.get('/', async (req, res) => {
     try {
-        const userDocuments = await listUsers({ page: req.query.page, limit: req.query.limit });
+        const userDocuments = await listUsers({
+            page: req.query.page,
+            limit: req.query.limit,
+            sortBy: req.query.sortBy,
+        });
         return res.status(200).send({ message: 'Users fetched successfully', data: userDocuments });
     } catch (err) {
         Logger.log.error('Error occurred while getting users:', err);

@@ -11,7 +11,7 @@ const Logger = require('../services/logger');
 
 /**
  * Helper function to check for existing user
- * @param {string} email user's email
+ * @param {string} email - user's email
  * @returns boolean
  */
 const checkForExistingUser = async ({ email }) => {
@@ -27,12 +27,16 @@ const checkForExistingUser = async ({ email }) => {
 };
 
 /**
- *
- * @param {*} param0
- * @returns
+ * Helper function to fetch user list
+ * @param {number} page - page number
+ * @param {number} limit - limit number
+ * @param {object} sortBy - sort direction
+ * @returns {object}
  */
 const listUsers = async ({ page = 1, limit = 15, sortBy = { name: 1 } }) => {
     try {
+        page = parseInt(page);
+        limit = parseInt(limit);
         const pipeline = [
             { $sort: sortBy },
             { $project: { _id: 1, name: 1, email: 1 } },

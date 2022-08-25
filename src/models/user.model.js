@@ -15,6 +15,10 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
     {
+        id: {
+            type: String,
+            required: true,
+        },
         name: {
             type: String,
             required: true,
@@ -43,21 +47,15 @@ const userSchema = new Schema(
     { timestamps: true },
 );
 
-userSchema.pre('save', function (next) {
+/**
+ * Encryption method for the password field
+ */
+userSchema.pre('save', async function (next) {
     var user = this;
     if (user.isModified('password')) {
-        bcrypt.genSalt(10, (err, salt) => {
-            if (err) {
-                throw err;
-            }
-            bcrypt.hash(user.password, salt, (err, hash) => {
-                if (err) {
-                    throw err;
-                }
-                user.password = hash;
-                next();
-            });
-        });
+        const hash = await bcrypt.hash(user.password, 10);
+        user.password = hash;
+        next();
     } else {
         next();
     }
