@@ -35,6 +35,8 @@ const checkForExistingUser = async ({ email }) => {
  */
 const listUsers = async ({ page = 1, limit = 15, sortBy = { name: 1 } }) => {
     try {
+        page = parseInt(page);
+        limit = parseInt(limit);
         const pipeline = [
             { $sort: sortBy },
             { $project: { _id: 1, name: 1, email: 1 } },
