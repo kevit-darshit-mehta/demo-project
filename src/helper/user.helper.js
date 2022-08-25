@@ -13,6 +13,7 @@ const Logger = require('../services/logger');
  * Declarations & Implementations
  */
 const userJson = require('./../../seed/user.json');
+const courseJson = require('./../../seed/course.json');
 
 /**
  * Helper function to check for existing user
@@ -93,15 +94,46 @@ const seedData = async () => {
  * Add user data to the database
  */
 const seedUsers = async () => {
-    const users = await User.find({});
-    for (const user of userJson) {
-        if (!users.find((u) => u.email === user.email)) {
-            await User.create(user);
+    const users = await User.find({}).lean();
+    for (let i = 0; i < userJson.length; i++) {
+        if (!users.find((u) => u.email === userJson[i].email)) {
+            userJson[i].course = await seedCourse();
+            await User.create(userJson[i]);
         }
     }
     Logger.log.info('Users seeded successfully.');
 };
 
+/**
+ * Helper function to generate random number
+ * @param min - minimum number to generate
+ * @param max - maximum number to generate
+ * @returns {number}
+ */
+const getRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+};
+
+/**
+ * Helper function to pick random numbers courses
+ */
+const seedCourse = async () => {
+    try {
+        const randomNumber = await getRandomNumber(1, 8);
+        const courses = [];
+        for (let i = 0; i < randomNumber; i++) {
+            courses.push(courseJson[Math.floor(Math.random() * courseJson.length)]);
+        }
+        return courses;
+    } catch (e) {
+        Logger.log.error('Error occurred while picking random number course:', e);
+        return Promise.reject(e);
+    }
+};
+
+/**
+ * Calling this function to seed users data
+ */
 seedData();
 
 /**
