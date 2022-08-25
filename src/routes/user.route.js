@@ -11,7 +11,7 @@ const { listUsers } = require('../helper/user.helper');
  */
 
 /**
- *
+ * API to fetch user list from database
  */
 router.get('/', async (req, res) => {
     try {
