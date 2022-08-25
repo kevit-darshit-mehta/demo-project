@@ -35,6 +35,7 @@
     -   Create a Database, Database User and grant all privileges on this Database to this created User.
     -   Paste Database related configs in the .env file
     -   Once done, run `npm start`, and the server starts running on port 3200 (specified in env file)
+    -   For create Postman collection or understand the all APIs behaviour need to refer `Demo Project.postman_collection.json`.
 
 -   Start the Server
     -   Once the above steps are performed correctly, run `npm start`, and the Backend Middleware runs on port `PORT` configured in `.env` file.

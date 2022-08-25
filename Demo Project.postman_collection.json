@@ -1,0 +1,183 @@
+{
+    "info": {
+        "_postman_id": "85eeaf2d-3e1b-4f8c-aa8c-cd9502efc12e",
+        "name": "Demo Project",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get user list",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:3200/users/?limit=5&page=1&sortBy=name&sortType=-1",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "3200",
+                    "path": ["users", ""],
+                    "query": [
+                        {
+                            "key": "limit",
+                            "value": "5"
+                        },
+                        {
+                            "key": "page",
+                            "value": "1"
+                        },
+                        {
+                            "key": "sortBy",
+                            "value": "name"
+                        },
+                        {
+                            "key": "sortType",
+                            "value": "-1"
+                        }
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "name": "Get user list",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "http://localhost:3200/users/?limit=5&page=1&sortBy=name&sortType=-1",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3200",
+                            "path": ["users", ""],
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "5"
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "sortBy",
+                                    "value": "name"
+                                },
+                                {
+                                    "key": "sortType",
+                                    "value": "-1"
+                                }
+                            ]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": "{\n    \"message\": \"Users fetched successfully\",\n    \"data\": {\n        \"docs\": [\n            {\n                \"_id\": \"6307598fdff022d21f00e309\",\n                \"name\": \"Willie Findit\",\n                \"email\": \"Willie@gmail.com\",\n                \"course\": [\n                    {\n                        \"_id\": \"6307598fdff022d21f00e30a\",\n                        \"name\": \"Node\",\n                        \"video\": \"1\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e30b\",\n                        \"name\": \"React\",\n                        \"video\": \"1\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e30c\",\n                        \"name\": \"Nest\",\n                        \"video\": \"2\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e30d\",\n                        \"name\": \"React\",\n                        \"video\": \"4\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e30e\",\n                        \"name\": \"Vue\",\n                        \"video\": \"1\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e30f\",\n                        \"name\": \"React\",\n                        \"video\": \"3\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e310\",\n                        \"name\": \"Vue\",\n                        \"video\": \"2\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"6307598fdff022d21f00e352\",\n                \"name\": \"William M. Ford\",\n                \"email\": \"William@gmail.com\",\n                \"course\": [\n                    {\n                        \"_id\": \"6307598fdff022d21f00e353\",\n                        \"name\": \"Nest\",\n                        \"video\": \"4\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e354\",\n                        \"name\": \"React\",\n                        \"video\": \"4\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e355\",\n                        \"name\": \"Angular\",\n                        \"video\": \"3\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e356\",\n                        \"name\": \"Vue\",\n                        \"video\": \"3\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e357\",\n                        \"name\": \"Node\",\n                        \"video\": \"4\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e358\",\n                        \"name\": \"Angular\",\n                        \"video\": \"2\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"6307598fdff022d21f00e43f\",\n                \"name\": \"Vlad Sergeyev\",\n                \"email\": \"Vlad@gmail.com\",\n                \"course\": [\n                    {\n                        \"_id\": \"6307598fdff022d21f00e440\",\n                        \"name\": \"Vue\",\n                        \"video\": \"1\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e441\",\n                        \"name\": \"Angular\",\n                        \"video\": \"3\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e442\",\n                        \"name\": \"Nest\",\n                        \"video\": \"1\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e443\",\n                        \"name\": \"React\",\n                        \"video\": \"2\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"6307598fdff022d21f00e3c1\",\n                \"name\": \"Tyler Sargood\",\n                \"email\": \"Tyler@gmail.com\",\n                \"course\": [\n                    {\n                        \"_id\": \"6307598fdff022d21f00e3c2\",\n                        \"name\": \"Angular\",\n                        \"video\": \"2\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e3c3\",\n                        \"name\": \"Vue\",\n                        \"video\": \"1\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e3c4\",\n                        \"name\": \"Vue\",\n                        \"video\": \"2\"\n                    }\n                ]\n            },\n            {\n                \"_id\": \"6307598fdff022d21f00e430\",\n                \"name\": \"Telford Sansouci\",\n                \"email\": \"Telford@gmail.com\",\n                \"course\": [\n                    {\n                        \"_id\": \"6307598fdff022d21f00e431\",\n                        \"name\": \"Vue\",\n                        \"video\": \"4\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e432\",\n                        \"name\": \"React\",\n                        \"video\": \"4\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e433\",\n                        \"name\": \"React\",\n                        \"video\": \"4\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e434\",\n                        \"name\": \"Nest\",\n                        \"video\": \"1\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e435\",\n                        \"name\": \"Nest\",\n                        \"video\": \"1\"\n                    },\n                    {\n                        \"_id\": \"6307598fdff022d21f00e436\",\n                        \"name\": \"Vue\",\n                        \"video\": \"3\"\n                    }\n                ]\n            }\n        ],\n        \"total\": 58,\n        \"page\": 1,\n        \"limit\": 5,\n        \"pages\": 12\n    }\n}"
+                }
+            ]
+        },
+        {
+            "name": "User Register",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"email\": \"demo@gmail.com\",\n    \"password\": \"admin123\",\n    \"name\": \"Demo\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:3200/auth/register",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "3200",
+                    "path": ["auth", "register"]
+                }
+            },
+            "response": [
+                {
+                    "name": "User Register",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"demo@gmail.com\",\n    \"password\": \"admin123\",\n    \"name\": \"Demo\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:3200/auth/register",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3200",
+                            "path": ["auth", "register"]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": "{\n    \"message\": \"User registered successfully\"\n}"
+                }
+            ]
+        },
+        {
+            "name": "login",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"email\": \"demo@gmail.com\",\n    \"password\": \"admin123\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:3200/auth/login",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "3200",
+                    "path": ["auth", "login"]
+                }
+            },
+            "response": [
+                {
+                    "name": "login",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"demo@gmail.com\",\n    \"password\": \"admin123\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:3200/auth/login",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "3200",
+                            "path": ["auth", "login"]
+                        }
+                    },
+                    "_postman_previewlanguage": null,
+                    "header": null,
+                    "cookie": [],
+                    "body": "{\n    \"message\": \"User logged in successfully\"\n}"
+                }
+            ]
+        }
+    ]
+}
