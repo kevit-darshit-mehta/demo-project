@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
             page: req.query.page,
             limit: req.query.limit,
             sortBy: req.query.sortBy,
+            sortType: req.query.sortType,
         });
         return res.status(200).send({ message: 'Users fetched successfully', data: userDocuments });
     } catch (err) {
