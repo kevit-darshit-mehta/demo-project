@@ -1,8 +1,12 @@
 /**
- * System and 3rd party libs
+ * Module dependencies
  */
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+
+/**
+ * Services
+ */
 const Logger = require('./services/logger');
 
 /**

@@ -1,5 +1,5 @@
 /**
- * System and 3rd party libs
+ * Module dependencies
  */
 const express = require('express');
 const router = express.Router();
@@ -8,10 +8,22 @@ const session = require('express-session');
 const flash = require('express-flash');
 const mongoose = require('mongoose');
 const User = mongoose.model('user');
+
+/**
+ * Services
+ */
 const Logger = require('../services/logger');
 const { checkForExistingUser } = require('../helper/user.helper');
+
+/**
+ * Configurations
+ */
 const initializePassport = require('../passport-config');
 const config = require('../../config');
+
+/**
+ * Global declarations
+ */
 let users = [];
 
 /**

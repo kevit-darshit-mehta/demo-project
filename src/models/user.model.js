@@ -3,7 +3,7 @@
  */
 
 /**
- * System and 3rd Party libs
+ * Module dependencies
  */
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -12,7 +12,6 @@ const Schema = mongoose.Schema;
 /**
  * Schema Definition
  */
-
 const userSchema = new Schema(
     {
         id: {
