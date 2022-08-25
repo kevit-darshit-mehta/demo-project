@@ -8,7 +8,7 @@ const Logger = require('../services/logger');
 /**
  * Declarations & Implementations
  */
-
+const userJson = require('./../../seed/user.json');
 /**
  * Helper function to check for existing user
  * @param {string} email - user's email
@@ -39,7 +39,7 @@ const listUsers = async ({ page = 1, limit = 15, sortBy = { name: 1 } }) => {
         limit = parseInt(limit);
         const pipeline = [
             { $sort: sortBy },
-            { $project: { _id: 1, name: 1, email: 1 } },
+            { $project: { _id: 1, name: 1, email: 1, course: 1 } },
             {
                 $facet: {
                     docs: [
@@ -57,7 +57,7 @@ const listUsers = async ({ page = 1, limit = 15, sortBy = { name: 1 } }) => {
             },
         ];
         const users = await User.aggregate(pipeline).allowDiskUse(true);
-        const total = users?.[0]?.['total']?.['count'] || 0;
+        const total = users?.[0]?.['total']?.[0]?.['count'] || 0;
         return {
             docs: users?.[0]?.['docs'] || [],
             total,
@@ -70,6 +70,32 @@ const listUsers = async ({ page = 1, limit = 15, sortBy = { name: 1 } }) => {
         return Promise.reject(e);
     }
 };
+
+/**
+ * Add data in the database table
+ */
+const seedData = async () => {
+    try {
+        await seedUsers();
+    } catch (e) {
+        console.log('Error in creating Tables:', e);
+    }
+};
+
+/**
+ * Add user data to the database
+ */
+const seedUsers = async () => {
+    const users = await User.find({});
+    for (const user of userJson) {
+        if (!users.find((u) => u.email === user.email)) {
+            await User.create(user);
+        }
+    }
+    Logger.log.info('Users seeded successfully.');
+};
+
+seedData();
 
 /**
  * Service Export
