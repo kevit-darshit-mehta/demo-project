@@ -33,12 +33,14 @@ const checkForExistingUser = async ({ email }) => {
  * @param {object} sortBy - sort direction
  * @returns {object}
  */
-const listUsers = async ({ page = 1, limit = 15, sortBy = { name: 1 } }) => {
+const listUsers = async ({ page = 1, limit = 15, sortBy = 'name', sortType = 1 }) => {
     try {
         page = parseInt(page);
         limit = parseInt(limit);
+        const sort = {};
+        sort[sortBy] = parseInt(sortType);
         const pipeline = [
-            { $sort: sortBy },
+            { $sort: sort },
             { $project: { _id: 1, name: 1, email: 1, course: 1 } },
             {
                 $facet: {
