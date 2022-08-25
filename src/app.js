@@ -7,10 +7,14 @@ let bodyParser = require('body-parser');
 const fs = require('fs');
 let mongoose = require('mongoose');
 const cors = require('cors');
+
+/**
+ * Configuration
+ */
 const config = require('../config');
 
 /**
- * Required Services
+ * Services
  */
 let Logger = require('./services/logger');
 

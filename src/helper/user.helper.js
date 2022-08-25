@@ -1,14 +1,19 @@
 /**
- * System and 3rd party libs
+ * Module dependencies
  */
 const mongoose = require('mongoose');
 const User = mongoose.model('user');
+
+/**
+ * Services
+ */
 const Logger = require('../services/logger');
 
 /**
  * Declarations & Implementations
  */
 const userJson = require('./../../seed/user.json');
+
 /**
  * Helper function to check for existing user
  * @param {string} email - user's email
