@@ -12,8 +12,8 @@ const Logger = require('../services/logger');
 /**
  * Declarations & Implementations
  */
-const userJson = require('./../../seed/user.json');
-const courseJson = require('./../../seed/course.json');
+const userJson = require('../../seed/user.json');
+const courseJson = require('../../seed/course.json');
 
 /**
  * Helper function to check for existing user
@@ -36,7 +36,8 @@ const checkForExistingUser = async ({ email }) => {
  * Helper function to fetch user list
  * @param {number} page - page number
  * @param {number} limit - limit number
- * @param {object} sortBy - sort direction
+ * @param {object} sortBy - sort by field name
+ * @param {object} sortType - sorting direction
  * @returns {object}
  */
 const listUsers = async ({ page = 1, limit = 15, sortBy = 'name', sortType = 1 }) => {
